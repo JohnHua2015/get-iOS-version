@@ -1,5 +1,6 @@
 
 
+// 调用
 [self getVersionInfo];// 获取版本信息
 
 

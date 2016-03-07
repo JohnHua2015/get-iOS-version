@@ -15,7 +15,7 @@ static BOOL gsIsAppOfAppStore = YES;// 是不是 appStore 上的 app
 
 @interface ModelVersionInfo : NSObject
 
-@property (strong, nonatomic) NSString *versionName;// @"1.1.3"
+@property (strong, nonatomic) NSString *versionCode;// @"1.1.3"
 @property (strong, nonatomic) NSString *downloadUrl;// @"http://www.cnmsl.cn/OA/app/html/view/download.html"
 @property (strong, nonatomic) NSString *updateLog;// @"最新版本已经发布，为避免影响您的使用......
 @property (strong, nonatomic) NSString *forceUpdate;// 是否强制更新

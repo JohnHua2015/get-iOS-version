@@ -1,0 +1,30 @@
+
+
+[self getVersionInfo];// 获取版本信息
+
+
+#pragma mark - 版本检测
+// 获取版本信息
+- (void)getVersionInfo {
+    GetVersionInfoAsync(^(ModelVersionInfo *modelItem) {
+        self.modelVersion = modelItem;
+        
+        [self performSelectorOnMainThread:@selector(versionAction) withObject:nil waitUntilDone:YES];
+    }, ^{
+    });
+}
+// 版本更新
+- (void)versionAction {
+    if (self.modelVersion && !self.modelVersion.isNewestVersion) {
+        [self showVersionTipView:(self.modelVersion.updateLog ? [NSString stringByTrimNewLineSign:self.modelVersion.updateLog] : @"有新的版本")];
+    }
+    
+}
+// 更新版本
+- (void)doVersionUpdate
+{
+    NSURL *url = [NSURL URLWithString:self.modelVersion.downloadUrl];
+    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+        [[UIApplication sharedApplication] openURL:url];
+    }
+}
